@@ -27,7 +27,6 @@
 #include "qdf_platform.h"
 
 static qdf_mutex_t g_init_deinit_lock;
-
 void ipa_disable_register_cb(void)
 {
 	ipa_debug("Don't register ready cb with IPA driver");
