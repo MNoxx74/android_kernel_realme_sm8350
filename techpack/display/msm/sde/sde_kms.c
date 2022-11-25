@@ -71,6 +71,7 @@
 #endif
 
 #ifdef OPLUS_BUG_STABILITY
+#include <soc/oplus/boot_mode.h>
 #include "oplus_adfr.h"
 #endif
 
@@ -1634,7 +1635,7 @@ static void sde_kms_wait_for_commit_done(struct msm_kms *kms,
 		 */
 		SDE_EVT32_VERBOSE(DRMID(crtc));
 		ret = sde_encoder_wait_for_event(encoder, MSM_ENC_COMMIT_DONE);
-		if (ret && ret != -EWOULDBLOCK) {
+		if ((MSM_BOOT_MODE__RECOVERY != get_boot_mode()) && (ret && ret != -EWOULDBLOCK)) {
 			SDE_ERROR("wait for commit done returned %d\n", ret);
 			sde_crtc_request_frame_reset(crtc, encoder);
 			break;
