@@ -3306,7 +3306,7 @@ done:
 	 * further for this special case
 	 */
 	mod_timer(&device->idle_timer, jiffies +
-			msecs_to_jiffies(adreno_wake_timeout));
+			msecs_to_jiffies(adreno_wake_nice));
 
 }
 
