@@ -798,8 +798,9 @@ else ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS += -Os
 endif
 
-ifdef CONFIG_CC_WERROR
-KBUILD_CFLAGS  += -Werror
+# Profile Guided Optimization
+ifeq ($(CONFIG_PGO), y)
+KBUILD_CFLAGS	+= -fprofile-use -Wno-coverage-mismatch -Wno-error=coverage-mismatch
 endif
 
 # Tell gcc to never replace conditional load with a non-conditional one
