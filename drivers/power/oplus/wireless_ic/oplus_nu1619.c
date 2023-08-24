@@ -4316,7 +4316,7 @@ static int nu1916_charge_get_skewing_input_current(struct oplus_nu1619_ic *chip)
 	else
 		adjust_current_delay = 0;
 
-	if (nu1619_get_CEP_flag(chip) == 0 & adjust_current_delay == 0) {
+	if (nu1619_get_CEP_flag(chip) == 0 && adjust_current_delay == 0) {
 		cep_zero_cnt++;
 		cep_nonzero_cnt = 0;
 	} else if (nu1619_get_CEP_flag(chip) == 1 && adjust_current_delay == 0) {

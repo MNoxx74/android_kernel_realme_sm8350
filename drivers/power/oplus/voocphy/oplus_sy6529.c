@@ -354,7 +354,7 @@ static int sy6529_direct_chg_enable(struct oplus_voocphy_manager *chip, u8 *data
 	*data = *data & sy6529_CHARGE_MODE_MASK; /*SY6529 reg0x00:Bit[6:4]=001, 1_1 mode;  Bit[6:4]=010,2_1 mode*/
 	*data = *data >> sy6529_CHARGE_MODE_SHIFT;
 
-	if (*data == sy6529_CHARGE_MODE_2_1 | *data == sy6529_CHARGE_MODE_1_1) /* SY6529 is working in 2_1 mode or 1_1 mode, return 1*/
+	if (*data == sy6529_CHARGE_MODE_2_1 && sy6529_CHARGE_MODE_1_1) /* SY6529 is working in 2_1 mode or 1_1 mode, return 1*/
 		*data=1;
 	else
 		*data=0;	/* SY6529 not working, return 0*/
