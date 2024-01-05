@@ -604,9 +604,9 @@ static void option_instat_callback(struct urb *urb);
 #define WETELECOM_PRODUCT_6802			0x6802
 #define WETELECOM_PRODUCT_WMD300		0x6803
 
-/* OPPO products */
-#define OPPO_VENDOR_ID				0x22d9
-#define OPPO_PRODUCT_R11			0x276c
+/* OPLUS products */
+#define OPLUS_VENDOR_ID				0x22d9
+#define OPLUS_PRODUCT_R11			0x276c
 
 /* Sierra Wireless products */
 #define SIERRA_VENDOR_ID			0x1199
