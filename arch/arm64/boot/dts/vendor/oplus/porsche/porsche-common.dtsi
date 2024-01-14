@@ -79,7 +79,7 @@
 	//#endif /*OPLUS_FEATURE_FINGERPRINT*/
 
 	/* add pingrp for touchscreen */
-	pmx_ts_int_active_oppo {
+	pmx_ts_int_active_oplus {
 		ts_int_active: ts_int_active {
 			mux {
 				pins = "gpio23";
@@ -95,7 +95,7 @@
 		};
 	};
 
-	pmx_ts_int_suspend_oppo {
+	pmx_ts_int_suspend_oplus {
 		ts_int_suspend1: ts_int_suspend1 {
 			mux {
 				pins = "gpio23";
@@ -112,7 +112,7 @@
 		};
 	};
 
-	pmx_ts_reset_active_oppo {
+	pmx_ts_reset_active_oplus {
 		ts_reset_active: ts_reset_active {
 			mux {
 				pins = "gpio22";
@@ -128,7 +128,7 @@
 		};
 	};
 
-	pmx_ts_reset_suspend_oppo {
+	pmx_ts_reset_suspend_oplus {
 		ts_reset_suspend1: ts_reset_suspend1 {
 			mux {
 				pins = "gpio22";
@@ -686,7 +686,7 @@
 	};
 };
 &battery_charger {
-	//for oppo chg framework:
+	//for oplus chg framework:
     oplus,chg_ops = "plat-pmic";
 	qcom,smart_charging_screenoff;
 	qcom,input_current_charger_ma = <2000>;
@@ -1277,7 +1277,7 @@
 
 
 &soc {
-	//#ifdef FEATURE_OPPO_NV_BACKUP
+	//#ifdef FEATURE_OPLUS_NV_BACKUP
 	//add for creating a shared memory with uio for nv backup and restore
 	qcom,oembackup_sharedmem@0 {
 		compatible = "qcom,sharedmem-uio";
@@ -1285,7 +1285,7 @@
 		reg-names = "oembackup";
 		qcom,client-id = <0x00000004>;
 	};
-	//#endif /* FEATURE_OPPO_NV_BACKUP */
+	//#endif /* FEATURE_OPLUS_NV_BACKUP */
 };
 &ssc_sensors {
 		vdd-supply = <&pm8350c_l7>;
@@ -1445,12 +1445,12 @@
 	pinctrl-1 = <&tert_mi2s_sck_sleep &tert_mi2s_ws_sleep &tert_mi2s_sd0_sleep &tert_mi2s_sd1_sleep>;
 };
 
-&dai_mi2s2_rx {
-	qcom,msm-mi2s-lines = <2>;
-};
-
 &dai_mi2s2_tx {
 	qcom,msm-mi2s-lines = <1>;
+};
+
+&dai_mi2s2_rx {
+	qcom,msm-mi2s-lines = <2>;
 };
 
 /* #ifdef OPLUS_ARCH_EXTENDS */
@@ -1584,7 +1584,7 @@
 	//#endif /* OPLUS_FEATRUE_SIM_HOLDER_DETECT */
 
 	//#ifdef OPLUS_FEATURE_SENSOR_SMEM
-	/*enum sensor_id { OPPO_ACCEL,OPPO_GYRO,OPPO_MAG,OPPO_LIGHT,OPPO_PROXIMITY,OPPO_SAR,OPPO_CT,OPPO_BAROMETER,SENSORS_NUM};*/
+	/*enum sensor_id { OPLUS_ACCEL,OPLUS_GYRO,OPLUS_MAG,OPLUS_LIGHT,OPLUS_PROXIMITY,OPLUS_SAR,OPLUS_CT,OPLUS_BAROMETER,SENSORS_NUM};*/
         sensor_fb: sensor_fb {
             compatible = "oplus,sensor-feedback";
             master-id  = <3>;
@@ -1598,7 +1598,7 @@
 			sensor-name = <0x20>;//ICM4X6XX
 			sensor-direction = <6>;
 			sensor-index = <0>;//source num
-			sensor-type = <0>;//OPPO_ACCEL
+			sensor-type = <0>;//OPLUS_ACCEL
 			use-sois = <1>;
 		};
 		/* enum {AKM0991X = 0x01, MMC5x3x = 0x02};*/
@@ -1606,7 +1606,7 @@
 			sensor-name = <0x2>;//MMC5x3x
 			sensor-direction = <2>;
 			sensor-index = <0>;
-			sensor-type = <2>;//OPPO_MAG
+			sensor-type = <2>;//OPLUS_MAG
 			parameter-number= <18>;
 			soft-mag-parameter = <9999 0 129 1 45 1 466 0 10251 0 266 0 32 0 128 1 11396 0>;//e00 sign e01 sign...
 		};
@@ -1682,34 +1682,34 @@
 
 		/*virtual sensor
 		enum sensor_algo_id {
-			OPPO_PICKUP_DETECT,
-			OPPO_LUX_AOD,
-			OPPO_TP_GESTURE,
-			OPPO_FP_DISPLAY,
-			OPPO_FREE_FALL,
-			OPPO_CAMERA_PROTECT,
+			OPLUS_PICKUP_DETECT,
+			OPLUS_LUX_AOD,
+			OPLUS_TP_GESTURE,
+			OPLUS_FP_DISPLAY,
+			OPLUS_FREE_FALL,
+			OPLUS_CAMERA_PROTECT,
 			SENSOR_ALGO_NUM
 		}*/
 		pickup_detect {
-			sensor-type = <0>;//OPPO_PICKUP_DETECT
+			sensor-type = <0>;//OPLUS_PICKUP_DETECT
 			is-virtual-sensor;
 			is-need-prox = <1>;
 			prox-type = <0>;
 		};
 		lux_aod {
-			sensor-type = <1>; //OPPO_LUX_AOD
+			sensor-type = <1>; //OPLUS_LUX_AOD
 			is-virtual-sensor;
 			thrd-low = <12>;
 			thrd-high = <50>;
 			als-type = <0>; // 0 - ambient_light; 1 - wise_light
 		};
 		fp_display {
-			sensor-type = <3>;//OPPO_FP_DISPLAY
+			sensor-type = <3>;//OPLUS_FP_DISPLAY
 			is-virtual-sensor;
 			prox-type = <0>; // 0 - proximity; 1 - proximity_fake
 		};
 		free_fall {
-			sensor-type = <4>;//OPPO_FREE_FALL
+			sensor-type = <4>;//OPLUS_FREE_FALL
 			is-virtual-sensor;
 		};
 	};
@@ -1734,13 +1734,13 @@
 		pinctrl-0 = <&gpio_id2_default>;
 		goodix_optical_G3S {
 			oplus,fp-id = <1>; /* fp id mapping table */
-			vendor-chip = <11>; /* please refer to the struct fp_vendor_t in oppo_fp_commmon.n */
+			vendor-chip = <11>; /* please refer to the struct fp_vendor_t in oplus_fp_commmon.n */
 			eng-menu = "-1,-1"; /* represents SNR, inclination test item in engineer menu, and 0/1 means off/on */
 			chip-name = "G_OPTICAL_G3S";  /* /proc/fp_id, will be displayed in engineer menu  */
 		};
 		jiiov_0301 {
 			oplus,fp-id = <0>; /* fp id mapping table */
-			vendor-chip = <24>; /* please refer to the struct fp_vendor_t in oppo_fp_commmon.n */
+			vendor-chip = <24>; /* please refer to the struct fp_vendor_t in oplus_fp_commmon.n */
 			eng-menu = "-1,-1"; /* represents SNR, inclination test item in engineer menu, and 0/1 means off/on */
 			chip-name = "JIIOV_0301";  /* /proc/fp_id, will be displayed in engineer menu  */
 		};
@@ -2116,7 +2116,7 @@
 &reserved_memory {
 		kboot_uboot_logmem: kboot_uboot_logmem@0x9FE00000 {
 			reg = <0x0 0x9FE00000 0x0 0x200000>;
-			compatible = "oppo,xbl_uefi_kbootlog";
+			compatible = "oplus,xbl_uefi_kbootlog";
 			xbluefi-offset = <0x1F7000>;
 			no-map;
 		};
@@ -2149,7 +2149,7 @@
 
 &soc {
 	devinfo {
-		compatible = "oppo-devinfo";
+		compatible = "oplus-devinfo";
 
 		//pinctrl-names = "active", "sleep";
 		//pinctrl-0 = <&hw_id_active>;
@@ -2193,6 +2193,14 @@
 		pinctrl-0 = <&rf_cable0_active>;
 	};
 };
+
+//#ifdef OPLUS_FEATURE_CHG_BASIC
+&usb0 {
+	dwc3@a600000 {
+		snps,usb2-lpm-disable;
+	};
+};
+//#endif /* OPLUS_FEATURE_CHG_BASIC */
 
 //ifdef OPLUS_BUG_STABILITY
 &L6C {
@@ -2430,7 +2438,7 @@
 		thermal-governor = "step_wise";
 		trips {
 			cg00_config: cg00-config {
-				temperature = <85000>;
+				temperature = <80000>;
 				hysteresis = <3000>;
 				type = "passive";
 			};
@@ -2452,7 +2460,7 @@
 		thermal-governor = "step_wise";
 		trips {
 			cg01_config: cg01-config {
-				temperature = <85000>;
+				temperature = <80000>;
 				hysteresis = <3000>;
 				type = "passive";
 			};
@@ -2474,7 +2482,7 @@
 		thermal-governor = "step_wise";
 		trips {
 			cg10_config: cg10-config {
-				temperature = <85000>;
+				temperature = <80000>;
 				hysteresis = <3000>;
 				type = "passive";
 			};
@@ -2496,7 +2504,7 @@
 		thermal-governor = "step_wise";
 		trips {
 			cg11_config: cg11-config {
-				temperature = <85000>;
+				temperature = <80000>;
 				hysteresis = <3000>;
 				type = "passive";
 			};
@@ -2518,7 +2526,7 @@
 		thermal-governor = "step_wise";
 		trips {
 			cg20_config: cg20-config {
-				temperature = <85000>;
+				temperature = <80000>;
 				hysteresis = <3000>;
 				type = "passive";
 			};
@@ -2540,7 +2548,7 @@
 		thermal-governor = "step_wise";
 		trips {
 			cg21_config: cg21-config {
-				temperature = <85000>;
+				temperature = <80000>;
 				hysteresis = <3000>;
 				type = "passive";
 			};
@@ -2562,7 +2570,7 @@
 		thermal-governor = "step_wise";
 		trips {
 			cg30_config: cg30-config {
-				temperature = <85000>;
+				temperature = <80000>;
 				hysteresis = <3000>;
 				type = "passive";
 			};
@@ -2584,7 +2592,7 @@
 		thermal-governor = "step_wise";
 		trips {
 			cg31_config: cg31-config {
-				temperature = <85000>;
+				temperature = <80000>;
 				hysteresis = <3000>;
 				type = "passive";
 			};
@@ -2600,3 +2608,14 @@
 	};
 };
 //#endif OPLUS_FEATURE_THERMAL
+
+&ibat_lvl0 {
+	temperature = <7500>;
+	hysteresis = <200>;
+	type = "passive";
+};
+&ibat_lvl1 {
+	temperature = <8500>;
+	hysteresis = <200>;
+	type = "passive";
+};
