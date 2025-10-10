@@ -171,7 +171,7 @@ void sha256_compress(sha256_context_t *context);
 //void sha256_final(uint8_t *hash_value, sha256_context_t *context);
 //void sha256_update(const uint8_t *input_data, const uint32_t input_length, sha256_context_t *context);
 void sha256_init(sha256_context_t *context);
-void sha256(uint8_t *hash_value, const uint8_t *input_data, const uint32_t input_length);
+void optiga_sha256(uint8_t *hash_value, const uint8_t *input_data, const uint32_t input_length);
 
 
 #endif				/* _BIF_AUTHENTICATION_H_ */

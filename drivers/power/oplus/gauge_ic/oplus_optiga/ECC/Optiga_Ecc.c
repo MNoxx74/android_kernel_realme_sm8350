@@ -354,7 +354,7 @@ BOOL Ecc_VerifyODC( uint32_t *gf2n_ODC, uint32_t *gf2n_PublicKey, uint8_t *gf2n_
 
 	memcpy((uint8_t*)ubHashIn, (uint8_t*)gf2n_PublicKey, 18);
 	memcpy(((uint8_t*)ubHashIn)+18, (uint8_t*)gf2n_Uid, 10);
-	sha256((uint8_t*)ubHashOut, (uint8_t*)ubHashIn, 28);
+	optiga_sha256((uint8_t*)ubHashOut, (uint8_t*)ubHashIn, 28);
 
 	return ECDSA_verify( sigSignature, (uint8_t*)ubHashOut, ODC_163_PubKeyXY, &ODC_163_Curve);
 }

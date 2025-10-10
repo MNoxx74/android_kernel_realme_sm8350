@@ -1511,7 +1511,7 @@ void sha256_init(sha256_context_t *context)
  *                [in] input_data pointer to data to hash
  *                [in] input_length byte length of hash data
  ********************************************************************/
-void sha256(uint8_t *hash_value, const uint8_t *input_data, const uint32_t input_length)
+void optiga_sha256(uint8_t *hash_value, const uint8_t *input_data, const uint32_t input_length)
 {
 	sha256_context_t ctx;
 
